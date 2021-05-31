@@ -35,5 +35,5 @@ def define_model(input_shape):
   return model
 
 # print model summary
-define_model((512, 512, 3)).summary()
+# define_model((512, 512, 3)).summary()
 

@@ -42,5 +42,5 @@ def define_model(input_shape):
   return model
 
 # print model summary
-define_model(100).summary()
+# define_model(100).summary()
 
