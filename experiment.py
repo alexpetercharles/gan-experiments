@@ -28,5 +28,7 @@ train_ds = (
 from dcgan.train import train
 
 print('beginning dcgan training 💦')
+
 train(train_ds, BATCH_SIZE, ITERATION)
+
 print('training ended 🎉')
