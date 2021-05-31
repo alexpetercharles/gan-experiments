@@ -1,0 +1,7 @@
+# VisualStudioCode
+.vscode
+
+# Mac OS
+.DS_Store
+
+*/__pycache__
