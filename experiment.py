@@ -1,3 +1,4 @@
+import os
 import tensorflow as tf
 from pathlib import Path
 
@@ -7,6 +8,11 @@ data_dir = Path('./data/')
 BATCH_SIZE = 20
 BUFFER_SIZE = 32
 ITERATION = 20000
+
+try:
+    os.mkdir('./output')
+except FileExistsError:
+    pass
 
 # data load & preprocessing
 (train_x, _), (_, _) = tf.keras.preprocessing.image_dataset_from_directory(
@@ -21,4 +27,6 @@ train_ds = (
 
 from dcgan.train import train
 
+print('beginning dcgan training 💦')
 train(train_ds, BATCH_SIZE, ITERATION)
+print('training ended 🎉')
