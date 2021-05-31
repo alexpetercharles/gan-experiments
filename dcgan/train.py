@@ -3,7 +3,7 @@ import numpy as np
 import tensorflow as tf
 
 from dcgan.models import discriminator, generator
-from utils import image
+from utils import image, checkpoint
 
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 
@@ -73,6 +73,9 @@ def train_step(real_images, batch_size):
 
     return g_loss, d_loss
 
+@tf.function
+def fake_image_no_train():
+    return G(get_random_z(Z_DIM, 1), training=False)
 
 # training loop
 def train(ds, batch_size, iteration, log_freq=20):
@@ -92,3 +95,5 @@ def train(ds, batch_size, iteration, log_freq=20):
             g_loss_metrics.reset_states()
             d_loss_metrics.reset_states()
             total_loss_metrics.reset_states()
+            
+            image.save_step(fake_image_no_train(), step)
