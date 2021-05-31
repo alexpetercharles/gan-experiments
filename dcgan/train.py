@@ -3,7 +3,7 @@ import numpy as np
 import tensorflow as tf
 
 from dcgan.models import discriminator, generator
-from utils import image, checkpoint
+from utils import image
 
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 
