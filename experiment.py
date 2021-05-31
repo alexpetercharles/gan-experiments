@@ -5,8 +5,8 @@ from pathlib import Path
 # training/data
 data_dir = Path('./data/')
 
-BATCH_SIZE = 20
-BUFFER_SIZE = 32
+BATCH_SIZE = 36
+BUFFER_SIZE = 36
 ITERATION = 20000
 
 try:
