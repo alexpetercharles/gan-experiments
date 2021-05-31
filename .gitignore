@@ -5,3 +5,7 @@
 .DS_Store
 
 */__pycache__
+
+output
+generator
+discriminator

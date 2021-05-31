@@ -97,5 +97,6 @@ def train(ds, batch_size, iteration, log_freq=20):
             total_loss_metrics.reset_states()
             
             image.save_step(fake_image_no_train(), step)
+    
     G.save('./generator')
     D.save('./discriminator')
