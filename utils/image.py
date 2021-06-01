@@ -2,7 +2,7 @@ import os
 import tensorflow as tf
 from tensorflow.keras.preprocessing import image
 
-async def save_step(tensor, step):
+def save_step(tensor, step):
   try:
       os.mkdir('./output/steps')
   except FileExistsError:

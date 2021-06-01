@@ -97,7 +97,12 @@ def train(ds, batch_size, iteration, log_freq=20):
             d_loss_metrics.reset_states()
             total_loss_metrics.reset_states()
             
-            asyncio.run(image.save_step(fake_image_no_train(), step))
+            #asyncio.run(image.save_step(fake_image_no_train(), step))
+            image.save_step(fake_image_no_train(), step)
+
+        if step % (log_freq * 1000) == 0:
+            G.save('./generator')
+            D.save('./discriminator')
     
     G.save('./generator')
     D.save('./discriminator')
