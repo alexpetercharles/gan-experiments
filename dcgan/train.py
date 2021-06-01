@@ -1,6 +1,7 @@
 import os
 import numpy as np
 import tensorflow as tf
+import asyncio
 
 from dcgan.models import discriminator, generator
 from utils import image
@@ -96,7 +97,7 @@ def train(ds, batch_size, iteration, log_freq=20):
             d_loss_metrics.reset_states()
             total_loss_metrics.reset_states()
             
-            image.save_step(fake_image_no_train(), step)
+            asyncio.run(image.save_step(fake_image_no_train(), step))
     
     G.save('./generator')
     D.save('./discriminator')
