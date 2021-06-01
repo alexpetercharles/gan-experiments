@@ -9,11 +9,6 @@ BATCH_SIZE = 18
 BUFFER_SIZE = 36
 ITERATION = 100000
 
-try:
-    os.mkdir('./output')
-except FileExistsError:
-    pass
-
 # data load & preprocessing
 (train_x, _), (_, _) = tf.keras.preprocessing.image_dataset_from_directory(
   data_dir, image_size=(512,512))
@@ -25,7 +20,7 @@ train_ds = (
     .repeat()
 )
 
-from dcgan.train import train
+from wgangp.train import train
 
 print('beginning dcgan training 💦')
 

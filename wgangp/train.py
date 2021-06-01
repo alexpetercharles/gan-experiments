@@ -1,7 +1,8 @@
 import os
 import numpy as np
 import tensorflow as tf
-import asyncio
+
+from functools import partial
 
 from dcgan.models import discriminator, generator
 from utils import image
@@ -79,7 +80,7 @@ def train_step(real_images, batch_size):
         g_loss = g_loss_fn(fake_logits)
 
         gp = gradient_penalty(partial(D, training=True),
-                              real_images, fake_images)
+                              real_images, fake_images, batch_size)
         d_loss += gp * GP_WEIGHT
 
     d_gradients = d_tape.gradient(d_loss, D.trainable_variables)
@@ -117,7 +118,7 @@ def train(ds, batch_size, iteration, log_freq=20):
             #asyncio.run(image.save_step(fake_image_no_train(), step))
             image.save_step(fake_image_no_train(), step)
 
-        if step % (log_freq * 1000) == 0:
+        if step % (log_freq * 100) == 0:
             G.save('./generator')
             D.save('./discriminator')
     
